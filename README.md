@@ -7,13 +7,16 @@ iOS-KVO原理解析：
 
 
 
-#添加观察者
+# 添加观察者
+
 [self.model sg_addObserver:self forKeyPath:@"username" options:NSKeyValueObservingOptionNew context:nil];
 
-#移除观察者
+# 移除观察者
+
 [self.model sg_removeObserver:self forKeyPath:@"username"];
 
-#观察者回调
+# 观察者回调
+
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context{
 
     NSLog(@"监听：%@",change);
