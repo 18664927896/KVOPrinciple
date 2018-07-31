@@ -108,6 +108,8 @@
 			isa = PBXGroup;
 			children = (
 				842396A4210F1A0B003CA85C /* KVO */,
+				842396A8210FE99B003CA85C /* TestModel.h */,
+				842396A9210FE99B003CA85C /* TestModel.m */,
 				84239672210F19DC003CA85C /* AppDelegate.h */,
 				84239673210F19DC003CA85C /* AppDelegate.m */,
 				84239675210F19DC003CA85C /* ViewController.h */,
@@ -117,8 +119,6 @@
 				8423967D210F19DD003CA85C /* LaunchScreen.storyboard */,
 				84239680210F19DD003CA85C /* Info.plist */,
 				84239681210F19DD003CA85C /* main.m */,
-				842396A8210FE99B003CA85C /* TestModel.h */,
-				842396A9210FE99B003CA85C /* TestModel.m */,
 			);
 			path = KVOPrinciple;
 			sourceTree = "<group>";

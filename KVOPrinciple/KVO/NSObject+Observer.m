@@ -33,9 +33,8 @@
     //添加类方法
 //    Class metaClass = objc_getMetaClass(newName.UTF8String);
 //    class_addMethod(metaClass, sel, (IMP)setName, "v@:@");
-    
     //关联观察者
-    objc_setAssociatedObject(self, (__bridge const void*)@"obj", observer, OBJC_ASSOCIATION_ASSIGN);
+    objc_setAssociatedObject(self, (__bridge const void*)@"observer", observer, OBJC_ASSOCIATION_ASSIGN);
 }
 
 //实现set方法
@@ -47,9 +46,14 @@ void setName(id self, SEL _cmd,NSString *newVlue ){
     //通知观察者 ，你的值发生改变
     NSString *methodName = NSStringFromSelector(_cmd);
     NSLog(@"%@",methodName);
-    id observer = objc_getAssociatedObject(self, (__bridge const void*)@"obj");
-    NSString *key = @"name";
-    objc_msgSend(observer, @selector(observeValueForKeyPath:ofObject: change:context:),key,self,@{key:newVlue});
+    id observer = objc_getAssociatedObject(self, (__bridge const void*)@"observer");
+//    NSString *key = @"name";
+    NSString *property_name = methodName.lowercaseString;
+
+    property_name = [property_name substringFromIndex:3];
+    property_name = [property_name stringByReplacingOccurrencesOfString:@":" withString:@""];
+
+    objc_msgSend(observer, @selector(observeValueForKeyPath:ofObject: change:context:),property_name,self,@{property_name:newVlue});
 }
 
 //移除观察者
